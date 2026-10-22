@@ -16,11 +16,19 @@ const criarUsuario = (dados = {}) => {
 
 describe("Usuário - Create", () => {
 
-  it("deve retornar 201 ao receber dados válidos", async () => {
+  it("deve retornar 201 ao receber dados válidos sem telefone", async () => {
     const response = await criarUsuario();
 
     expect(response.statusCode).toBe(StatusCodes.CREATED);
     expect(response.body).toBe(1);
+  });
+
+  it("deve retornar 201 ao receber dados válidos com telefone", async () => {
+    const response = await criarUsuario({
+      phone: "11987654321",
+    });
+
+    expect(response.statusCode).toBe(StatusCodes.CREATED);
   });
 
   it("deve retornar 400 quando o nome tiver menos de 3 caracteres", async () => {
