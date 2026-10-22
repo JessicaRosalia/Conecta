@@ -9,5 +9,7 @@ router.get('/', (req, res) => {
 
 router.post('/usuarios', UsersController.createValidator, UsersController.create);
 router.get('/usuarios/:id', UsersController.getByIdValidator, UsersController.getById);
+router.patch('/usuarios/:id', UsersController.updateByIdValidator, UsersController.updateById);
+router.delete('/usuarios/:id', UsersController.deleteByIdValidator, UsersController.deleteById);
 
 export { router };
