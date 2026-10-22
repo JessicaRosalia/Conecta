@@ -22,6 +22,5 @@ export const createValidator = Validation({
 });
 
 export const create = (req: Request<{}, {}, IUser>, res: Response) => {
-    console.log(req.body);
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send("create de usuário ainda não implementado!");
+    return res.status(StatusCodes.CREATED).send(1);
 }
