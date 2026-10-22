@@ -24,7 +24,10 @@ describe("Usuário - GetById", () => {
     expect(resBuscado.body).toHaveProperty("id");
     expect(resBuscado.body).toHaveProperty("name");
     expect(resBuscado.body).toHaveProperty("email");
-    expect(resBuscado.body).toHaveProperty("password");
+    expect(resBuscado.body).toHaveProperty("phone");
+
+    expect(resBuscado.body).not.toHaveProperty("password");
+    expect(resBuscado.body).not.toHaveProperty("passwordHash");
   });
 
   it("Tenta buscar registro que não existe", async () => {
