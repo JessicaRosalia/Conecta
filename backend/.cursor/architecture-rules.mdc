@@ -1,0 +1,84 @@
+description: Princípios fundamentais de arquitetura do backend Conecta
+globs: []
+alwaysApply: true
+-----------------
+
+# Princípios de Arquitetura do Conecta
+
+## Estrutura atual
+
+* `src/index.ts`: ponto de entrada da aplicação.
+* `src/server/Server.ts`: implementação do servidor.
+* `src/server/routes/`: definição das rotas HTTP.
+* `src/server/controllers/`: tratamento das requisições e respostas HTTP.
+* `src/server/database/`: acesso e configuração do banco de dados.
+* `src/server/shared/middlewares/`: middlewares compartilhados.
+* `src/server/shared/services/`: serviços compartilhados.
+
+Consulte o código existente para confirmar as responsabilidades antes de realizar alterações.
+
+## Princípios fundamentais
+
+1. **Separação de responsabilidades:** mantenha rotas, controllers, regras de negócio e persistência organizados.
+2. **Baixo acoplamento:** evite dependências desnecessárias e dependências circulares.
+3. **Coesão:** cada componente deve ter uma responsabilidade clara.
+4. **Simplicidade:** evite abstrações, camadas e dependências sem necessidade concreta.
+5. **Integridade dos dados:** valide entradas e utilize transações e restrições do banco quando necessário.
+6. **Isolamento de estado:** evite estado compartilhado que possa causar interferência entre requisições.
+7. **Tratamento de erros:** siga as convenções existentes e não exponha informações sensíveis em respostas HTTP ou logs.
+8. **Evolução incremental:** preserve a arquitetura atual e evite refatorações não relacionadas à tarefa.
+
+## Carregamento progressivo da documentação
+
+Consulte apenas os documentos relevantes para a tarefa, seguindo este guia:
+
+**Se** a tarefa envolver arquitetura geral ou criação/modificação de módulos:
+→ Leia `docs/ARCHITECTURE-OVERVIEW.md` primeiro.
+
+**Se** envolver banco de dados, entidades, persistência ou isolamento de estado:
+→ Leia `docs/STATE-ISOLATION.md` e verifique se suas orientações correspondem à tecnologia realmente utilizada.
+
+**Se** envolver criação ou alteração de controllers, services, repositories ou transações:
+→ Leia `docs/CODING-PATTERNS.md`.
+
+<!-- **Se** envolver organização de funcionalidades em pastas ou reorganização do código:
+→ Leia `docs/FEATURE-FOLDERS.md`. Não imponha uma organização por funcionalidades se ela ainda não tiver sido adotada no projeto. -->
+<!-- 
+**Se** envolver limites entre módulos, dependências ou comunicação entre componentes:
+→ Leia `docs/MODULAR-PRINCIPLES.md`. Aplique os princípios de acordo com a arquitetura atual, sem presumir o uso de múltiplos pacotes ou microsserviços. -->
+
+**Se** envolver tratamento de erros, logs, métricas ou resiliência:
+→ Leia `docs/RESILIENCE-OBSERVABILITY.md`.
+
+**Se** envolver testes, verificações, build ou preparação para commit:
+→ Leia `docs/IMPLEMENTATION-CHECKLIST.md` e confira os scripts disponíveis em `package.json`.
+
+Antes de seguir qualquer orientação, verifique se ela é compatível com o código e as tecnologias atuais. Não presuma que bibliotecas ou padrões mencionados na documentação estejam implementados.
+
+Se um documento não existir ou não abordar a tarefa, consulte o código e a documentação disponível, sem inventar instruções.
+
+---
+Consulte somente os documentos de `docs/` relevantes para a tarefa atual. Verifique os nomes e conteúdos dos arquivos existentes; não presuma que documentos específicos existam.
+
+* **Arquitetura ou organização de módulos:** consulte a documentação arquitetural pertinente.
+* **Banco de dados ou persistência:** consulte a documentação do banco e inspecione a implementação atual.
+* **Rotas, controllers ou services:** consulte os padrões existentes e implementações semelhantes.
+* **Erros ou middlewares:** consulte a documentação e o código relacionados.
+* **Build, scripts ou testes:** consulte `package.json`, `tsconfig.json` e os comandos disponíveis.
+
+Se houver conflito entre a documentação e o código, identifique a divergência antes de realizar mudanças significativas.
+
+## Diretrizes de implementação
+
+* Inspecione o código antes de alterá-lo.
+* Não presuma que tecnologias planejadas já estejam implementadas.
+<!-- * Explique decisões arquiteturais relevantes e conceitos novos, pois o projeto também tem finalidade educacional. -->
+* Execute as verificações pertinentes e informe o que não foi possível verificar.
+
+## Restrições - O que NÃO fazer
+
+* Não instale, remova ou atualize dependências sem autorização explícita.
+* Não adicione logs de depuração, como `console.log`, ao código de produção.
+* Não altere configurações ou tecnologias adotadas sem necessidade justificada e autorização quando houver impacto relevante.
+* Antes de implementar, consulte o código existente e siga as convenções documentadas em `docs/`.
+* Não presuma versões, bibliotecas ou ferramentas que não estejam confirmadas no projeto.
