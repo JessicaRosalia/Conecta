@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
 describe("Usuário - GetById", () => {
-  it("Buscar registro por id", async () => {
+  it("deve retornar 200 ao buscar registro por id", async () => {
 
     const res1 = await testServer
       .post("/usuarios")
@@ -30,15 +30,18 @@ describe("Usuário - GetById", () => {
     expect(resBuscado.body).not.toHaveProperty("passwordHash");
   });
 
-  it("Tenta buscar registro que não existe", async () => {
+  it("deve retornar 404 ao buscar registro inexistente", async () => {
     const idDoesnotExist = 9999;
 
     const response = await testServer
       .get(`/usuarios/${idDoesnotExist}`)
       .send();
 
-    expect(response.statusCode).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
-    expect(response.body).toHaveProperty("errors.default");
+    expect(response.statusCode).toBe(StatusCodes.NOT_FOUND);
+    expect(response.body).toHaveProperty(
+      "errors.default",
+      "Registro não encontrado",
+    );
   });
 
   it.each([

@@ -11,6 +11,7 @@ describe("Usuário - DeleteById", () => {
         name: "Jéssica Rosália",
         email: "jessica@gmail.com",
         password: "12345678",
+        phone: "103942800"
       });
 
     expect(res1.statusCode).toBe(StatusCodes.CREATED);
@@ -22,15 +23,18 @@ describe("Usuário - DeleteById", () => {
     expect(resApagado.statusCode).toBe(StatusCodes.NO_CONTENT);
   });
 
-  it("deve retornar erro ao tentar apagar registro inexistente", async () => {
+  it("deve retornar erro 404 ao tentar apagar registro inexistente", async () => {
     const idInexistente = 9999;
 
     const response = await testServer
       .delete(`/usuarios/${idInexistente}`)
       .send();
 
-    expect(response.statusCode).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
-    expect(response.body).toHaveProperty("errors.default");
+    expect(response.statusCode).toBe(StatusCodes.NOT_FOUND);
+    expect(response.body).toHaveProperty(
+      "errors.default",
+      "Registro não encontrado",
+    );
   });
 
   it.each([
