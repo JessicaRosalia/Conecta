@@ -7,17 +7,24 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "start": "yarn tsx watch ./src/index.ts"
+    "start": "yarn tsx watch ./src/index.ts",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
+    "@types/jest": "^30.0.0",
     "dotenv": "^18.0.7",
     "express": "^5.3.0",
     "http-status-codes": "^2.3.0",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
     "yup": "^1.7.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/supertest": "^7.2.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "supertest": "^7.3.1",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
   }
 }
