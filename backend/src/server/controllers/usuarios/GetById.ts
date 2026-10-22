@@ -26,6 +26,6 @@ export const getById = (req: Request<IParam>, res: Response) => {
         id: req.params.id,
         name: "Jéssica Rosália",
         email: "jessicaf@gmail.com",
-        password: "123456"
+        password: "12345678"
     });
 }
