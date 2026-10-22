@@ -17,7 +17,7 @@ export const deleteByIdValidator = Validation({
 
 export const deleteById = async (req: Request<IParamProps>, res: Response) => {
 
-  if(Number(req.params.id) === 9999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+  if(Number(req.params.id) === 9999) return res.status(StatusCodes.NOT_FOUND).json({
     errors: {
       default: "Registro não encontrado"
     }
