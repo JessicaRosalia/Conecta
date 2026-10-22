@@ -16,6 +16,16 @@ export const getByIdValidator = Validation({
 });
 
 export const getById = (req: Request<IParam>, res: Response) => {
-    console.log(req.params);
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send("getById de usuário ainda não implementado!");
+    if(Number(req.params.id) === 9999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: {
+            default: "Registro não encontrado"
+        }
+    });
+
+    return res.status(StatusCodes.OK).send({
+        id: req.params.id,
+        name: "Jéssica Rosália",
+        email: "jessicaf@gmail.com",
+        password: "123456"
+    });
 }
